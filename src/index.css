@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-nade-navy: #0B1B3D;
+    --color-nade-navy-light: #162C5B;
+    --color-nade-navy-dark: #060F24;
+    --color-nade-gold: #E5A93C;
+    --color-nade-gold-light: #F3C465;
+    --color-nade-gold-dark: #C2851D;
+    --color-nade-ochre: #C2410C;
+    --color-nade-emerald: #047857;
+    --color-nade-cream: #F8F9FA;
+    --color-nade-surface: #FFFFFF;
+    --color-nade-text: #0F172A;
+    --color-nade-muted: #475569;
+    --color-nade-border: #E2E8F0;
+
+    --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-readability: 'Lexend', sans-serif;
+  }
+
+  /* Accessibility Size Overrides */
+  html.text-size-large {
+    font-size: 115%;
+  }
+
+  html.text-size-xlarge {
+    font-size: 130%;
+  }
+
+  /* Dyslexia Friendly Font Mode */
+  html.font-dyslexia {
+    font-family: 'Lexend', Comic Sans MS, -apple-system, sans-serif !important;
+  }
+  html.font-dyslexia * {
+    font-family: inherit !important;
+    letter-spacing: 0.04em !important;
+    word-spacing: 0.08em !important;
+    line-height: 1.7 !important;
+  }
+
+  /* High Contrast Modes */
+  html.high-contrast-dark {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+  }
+  html.high-contrast-dark body {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+  }
+  html.high-contrast-dark * {
+    border-color: #555555 !important;
+  }
+  html.high-contrast-dark a,
+  html.high-contrast-dark button {
+    outline-color: #FFFF00 !important;
+  }
+
+  html.high-contrast-yellow {
+    background-color: #000000 !important;
+    color: #FFFF00 !important;
+  }
+  html.high-contrast-yellow body {
+    background-color: #000000 !important;
+    color: #FFFF00 !important;
+  }
+  html.high-contrast-yellow a {
+    color: #00FFFF !important;
+    text-decoration: underline !important;
+  }
+  html.high-contrast-yellow button {
+    border: 2px solid #FFFF00 !important;
+    color: #FFFF00 !important;
+    background-color: #000000 !important;
+  }
+  html.high-contrast-yellow div,
+  html.high-contrast-yellow section,
+  html.high-contrast-yellow nav,
+  html.high-contrast-yellow header,
+  html.high-contrast-yellow footer {
+    background-color: #000000 !important;
+    border-color: #FFFF00 !important;
+    color: #FFFF00 !important;
+  }
+
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  html.reduced-motion *,
+  html.reduced-motion *::before,
+  html.reduced-motion *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-nade-text);
+    background-color: var(--color-nade-cream);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+
+  /* Enhanced Focus Visible for Keyboard Navigation (WCAG 2.2 AA) */
+  :focus-visible {
+    outline: 3px solid #E5A93C !important;
+    outline-offset: 3px !important;
+    border-radius: 4px;
+  }
+}
+
+/* Custom Linework Hand Pattern & Utilities */
+.hand-pattern-bg {
+  background-image: radial-gradient(rgba(229, 169, 60, 0.15) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+.gradient-mesh {
+  background: radial-gradient(circle at 10% 20%, rgba(11, 27, 61, 0.06) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(229, 169, 60, 0.08) 0%, transparent 45%);
+}
+
+.dark-mesh {
+  background: radial-gradient(circle at 15% 30%, rgba(229, 169, 60, 0.12) 0%, transparent 50%),
+              radial-gradient(circle at 85% 70%, rgba(194, 65, 12, 0.1) 0%, transparent 50%),
+              #0B1B3D;
+}
+
+/* Accessible Skip Link */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 1rem;
+  background: #0B1B3D;
+  color: #FFFFFF;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  z-index: 99999;
+  transition: top 0.2s ease-in-out;
+  border: 2px solid #E5A93C;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
