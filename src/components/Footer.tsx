@@ -1,6 +1,5 @@
 import React from 'react';
 import { 
-  Hand, 
   MapPin, 
   Mail, 
   Heart, 
@@ -36,10 +35,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Col 1 & 2: Organization Profile */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#E5A93C] to-[#C2410C] p-0.5 shadow-md">
-                <div className="w-full h-full bg-[#0B1B3D] rounded-[10px] flex items-center justify-center text-[#E5A93C]">
-                  <Hand className="w-6 h-6 stroke-[2.2]" />
-                </div>
+              <div className="w-14 h-14 rounded-2xl bg-white/10 p-1.5 backdrop-blur-sm border border-[#E5A93C]/40 shadow-lg overflow-hidden bg-gradient-to-b from-[#0e234e] to-[#071329] flex items-center justify-center flex-shrink-0">
+                <img 
+                  src="/nade-logo.png" 
+                  alt="National Association of the Deaf Eswatini official logo" 
+                  className="w-full h-full object-contain filter drop-shadow" 
+                />
               </div>
               <div>
                 <h3 className="text-xl font-extrabold text-white font-['Outfit'] tracking-wide">

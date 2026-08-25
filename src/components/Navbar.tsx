@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { 
   Menu, 
   X, 
+  Home,
   BookOpen, 
   Video, 
   HeartHandshake, 
@@ -12,7 +13,6 @@ import {
   Users, 
   CalendarCheck,
   ChevronRight,
-  Hand,
   Sparkles
 } from 'lucide-react';
 import type { PageRoute } from '../types';
@@ -31,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks: { route: PageRoute; label: string; icon: React.ReactNode; isNewOrSpecial?: boolean }[] = [
-    { route: 'home', label: 'Home', icon: <Hand className="w-4 h-4" /> },
+    { route: 'home', label: 'Home', icon: <Home className="w-4 h-4" /> },
     { route: 'about', label: 'About NADE', icon: <ShieldCheck className="w-4 h-4" /> },
     { route: 'work', label: 'Our Work', icon: <HeartHandshake className="w-4 h-4" /> },
     { 
@@ -108,11 +108,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             onKeyDown={(e) => e.key === 'Enter' && handleNavClick('home')}
             aria-label="NADE Home Page"
           >
-            {/* Visual Hand Emblem */}
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#E5A93C] to-[#C2410C] p-0.5 shadow-lg group-hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-[#0B1B3D] rounded-[10px] flex items-center justify-center text-[#E5A93C]">
-                <Hand className="w-6 h-6 stroke-[2.2]" />
-              </div>
+            {/* Official NADE Logo Emblem */}
+            <div className="w-12 h-12 rounded-xl bg-white/10 p-1 backdrop-blur-sm border border-[#E5A93C]/40 shadow-lg group-hover:scale-105 group-hover:border-[#E5A93C] transition-all overflow-hidden bg-gradient-to-b from-[#0e234e] to-[#071329] flex items-center justify-center flex-shrink-0">
+              <img 
+                src="/nade-logo.png" 
+                alt="National Association of the Deaf Eswatini official logo" 
+                className="w-full h-full object-contain filter drop-shadow" 
+              />
             </div>
 
             <div>

@@ -51,17 +51,29 @@ export const AboutView: React.FC<AboutViewProps> = () => {
       {/* 1. Header Banner */}
       <section className="bg-gradient-to-r from-[#0B1B3D] via-[#162C5B] to-[#0B1B3D] text-white rounded-3xl p-8 sm:p-14 shadow-2xl border-b-4 border-[#E5A93C] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 hand-pattern-bg pointer-events-none" />
-        <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            About NADE Eswatini
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              About NADE Eswatini
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
+              Our Mission, History & Governance
+            </h1>
+            <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light max-w-2xl">
+              Founded by the Deaf, led by the Deaf, for the Deaf. We are dedicated to ensuring that every Deaf and hard-of-hearing Swazi lives in dignity, equality, and complete linguistic freedom.
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
-            Our Mission, History & Governance
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
-            Founded by the Deaf, led by the Deaf, for the Deaf. We are dedicated to ensuring that every Deaf and hard-of-hearing Swazi lives in dignity, equality, and complete linguistic freedom.
-          </p>
+          
+          <div className="lg:col-span-4 flex justify-center lg:justify-end">
+            <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-white/10 p-3 backdrop-blur-md border-2 border-[#E5A93C]/40 shadow-2xl flex items-center justify-center bg-gradient-to-b from-[#0e234e] to-[#071329] group hover:border-[#E5A93C] transition-all">
+              <img 
+                src="/nade-logo.png" 
+                alt="National Association of the Deaf Eswatini official emblem" 
+                className="w-full h-full object-contain filter drop-shadow-xl group-hover:scale-105 transition-transform" 
+              />
+            </div>
+          </div>
         </div>
       </section>
 
