@@ -49,9 +49,44 @@ export const AboutView: React.FC<AboutViewProps> = () => {
   ];
 
   return (
-    <div className="space-y-16 py-8">
+    <div className="space-y-16 py-8 relative overflow-hidden">
+      {/* 🌟 Soft Ambient Logo Watermark Background for Entire About Page */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden" aria-hidden="true">
+        {/* Upper soft logo watermark with golden backlight */}
+        <div className="absolute -top-10 right-1/4 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] opacity-[0.04] blur-[1px] transform rotate-6">
+          <img 
+            src="/nade-logo.png" 
+            alt="" 
+            className="w-full h-full object-contain filter contrast-150 grayscale" 
+          />
+        </div>
+
+        {/* Center grand majestic watermark with radial gold aura */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] sm:w-[900px] sm:h-[900px] opacity-[0.035] transform -rotate-12">
+          <div className="absolute inset-0 bg-[#E5A93C]/10 rounded-full blur-3xl -z-10" />
+          <img 
+            src="/nade-logo.png" 
+            alt="" 
+            className="w-full h-full object-contain filter brightness-110" 
+          />
+        </div>
+
+        {/* Lower soft logo watermark */}
+        <div className="absolute bottom-20 left-10 w-[450px] h-[450px] sm:w-[650px] sm:h-[650px] opacity-[0.04] blur-[0.5px] transform rotate-12">
+          <img 
+            src="/nade-logo.png" 
+            alt="" 
+            className="w-full h-full object-contain filter contrast-125 grayscale" 
+          />
+        </div>
+
+        {/* Subtle royal blue & gold ambient gradients */}
+        <div className="absolute top-1/4 -left-40 w-96 h-96 bg-[#0B1B3D]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 -right-40 w-96 h-96 bg-[#E5A93C]/5 rounded-full blur-3xl" />
+      </div>
+
       {/* 1. Header Banner */}
-      <section className="bg-gradient-to-r from-[#0B1B3D] via-[#162C5B] to-[#0B1B3D] text-white rounded-3xl p-8 sm:p-14 shadow-2xl border-b-4 border-[#E5A93C] relative overflow-hidden">
+      <section className="bg-gradient-to-r from-[#0B1B3D] via-[#162C5B] to-[#0B1B3D] text-white rounded-3xl p-8 sm:p-14 shadow-2xl border-b-4 border-[#E5A93C] relative overflow-hidden z-10">
         <div className="absolute inset-0 opacity-10 hand-pattern-bg pointer-events-none" />
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8 space-y-4">
@@ -74,7 +109,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
       </section>
 
       {/* 2. Official Insignia & Heraldry Showcase */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-gradient-to-br from-[#0B1B3D] via-[#162C5B] to-[#0B1B3D] text-white rounded-3xl p-8 sm:p-10 shadow-xl border-2 border-[#E5A93C]/40 relative overflow-hidden">
           <div className="absolute -right-10 -bottom-10 w-64 h-64 opacity-10 pointer-events-none">
             <BrandLogo variant="watermark" />
@@ -124,10 +159,10 @@ export const AboutView: React.FC<AboutViewProps> = () => {
       </section>
 
       {/* 3. Mission, Vision, Core Values */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Mission */}
-          <div className="bg-white rounded-3xl p-8 shadow-lg border border-[#E2E8F0] space-y-4">
+          <div className="bg-white/95 backdrop-blur-xs rounded-3xl p-8 shadow-lg border border-[#E2E8F0] space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-[#0B1B3D] text-[#E5A93C] flex items-center justify-center shadow-md">
               <Target className="w-6 h-6" />
             </div>
@@ -140,7 +175,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
           </div>
 
           {/* Vision */}
-          <div className="bg-white rounded-3xl p-8 shadow-lg border border-[#E2E8F0] space-y-4">
+          <div className="bg-white/95 backdrop-blur-xs rounded-3xl p-8 shadow-lg border border-[#E2E8F0] space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-[#047857] text-white flex items-center justify-center shadow-md">
               <Eye className="w-6 h-6" />
             </div>
@@ -153,7 +188,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
           </div>
 
           {/* Values */}
-          <div className="bg-white rounded-3xl p-8 shadow-lg border border-[#E2E8F0] space-y-4">
+          <div className="bg-white/95 backdrop-blur-xs rounded-3xl p-8 shadow-lg border border-[#E2E8F0] space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-[#C2410C] text-white flex items-center justify-center shadow-md">
               <Heart className="w-6 h-6" />
             </div>
@@ -179,7 +214,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
       </section>
 
       {/* 4. Historical Timeline */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-[#C2410C]">
             Journey of Resilience
@@ -210,8 +245,8 @@ export const AboutView: React.FC<AboutViewProps> = () => {
         </div>
       </section>
 
-      {/* 4. Leadership & Regional Governance Council */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      {/* 5. Leadership & Regional Governance Council */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-[#C2410C]">
             Governance & Leadership
@@ -228,7 +263,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
           {NADE_LEADERSHIP.map((leader, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-3xl p-6 shadow-md border border-[#E2E8F0] space-y-3 flex flex-col justify-between hover:shadow-xl hover:border-[#E5A93C] transition-all"
+              className="bg-white/95 backdrop-blur-xs rounded-3xl p-6 shadow-md border border-[#E2E8F0] space-y-3 flex flex-col justify-between hover:shadow-xl hover:border-[#E5A93C] transition-all"
             >
               <div className="space-y-2">
                 <div className="w-12 h-12 rounded-2xl bg-[#0B1B3D] text-[#E5A93C] flex items-center justify-center font-bold text-lg">
@@ -254,8 +289,8 @@ export const AboutView: React.FC<AboutViewProps> = () => {
         </div>
       </section>
 
-      {/* 5. National Partnerships & Affiliations */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 6. National Partnerships & Affiliations */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-[#F8F9FA] rounded-3xl p-8 border border-[#E2E8F0] text-center space-y-6">
           <h3 className="text-lg font-bold text-[#0B1B3D] font-['Outfit'] uppercase tracking-wider">
             Institutional Affiliations & Alliances

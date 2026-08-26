@@ -36,9 +36,44 @@ export const HomeView: React.FC<HomeViewProps> = ({
   const featuredStory = COMMUNITY_STORIES[0];
 
   return (
-    <div className="space-y-16 sm:space-y-24">
+    <div className="space-y-16 sm:space-y-24 relative overflow-hidden">
+      {/* 🌟 Soft Ambient Logo Watermark Background for Entire Home Page */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden" aria-hidden="true">
+        {/* Upper Soft Logo Watermark (Behind Stats & Live Finger Spelling Tool) */}
+        <div className="absolute top-[480px] -right-20 w-[550px] h-[550px] sm:w-[850px] sm:h-[850px] opacity-[0.04] blur-[0.5px] transform rotate-12">
+          <img 
+            src="/nade-logo.png" 
+            alt="" 
+            className="w-full h-full object-contain filter contrast-125 grayscale" 
+          />
+        </div>
+
+        {/* Center Grand Majestic Watermark (Behind Programmes & Map) */}
+        <div className="absolute top-[1250px] -left-28 w-[650px] h-[650px] sm:w-[950px] sm:h-[950px] opacity-[0.035] transform -rotate-12">
+          <div className="absolute inset-0 bg-[#E5A93C]/10 rounded-full blur-3xl -z-10" />
+          <img 
+            src="/nade-logo.png" 
+            alt="" 
+            className="w-full h-full object-contain filter contrast-150 brightness-105" 
+          />
+        </div>
+
+        {/* Lower Soft Logo Watermark (Behind Video Hub & Community Stories) */}
+        <div className="absolute top-[2100px] right-10 w-[500px] h-[500px] sm:w-[800px] sm:h-[800px] opacity-[0.03] blur-[1px] transform rotate-6">
+          <img 
+            src="/nade-logo.png" 
+            alt="" 
+            className="w-full h-full object-contain filter grayscale" 
+          />
+        </div>
+
+        {/* Soft Ambient Royal Navy & Gold Glows */}
+        <div className="absolute top-[600px] left-10 w-96 h-96 bg-[#0B1B3D]/5 rounded-full blur-3xl" />
+        <div className="absolute top-[1600px] right-10 w-96 h-96 bg-[#E5A93C]/5 rounded-full blur-3xl" />
+      </div>
+
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0B1B3D] via-[#0F234D] to-[#0B1B3D] text-white pt-12 pb-20 lg:py-24 border-b-4 border-[#E5A93C]">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0B1B3D] via-[#0F234D] to-[#0B1B3D] text-white pt-12 pb-20 lg:py-24 border-b-4 border-[#E5A93C] z-10">
         {/* Background linework mesh */}
         <div className="absolute inset-0 opacity-15 hand-pattern-bg pointer-events-none" />
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#E5A93C]/10 rounded-full blur-3xl pointer-events-none" />
@@ -165,9 +200,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* 2. IMPACT STATS TICKER */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          <div className="bg-white rounded-3xl p-6 text-center shadow-lg border border-[#E2E8F0] space-y-1 hover:border-[#E5A93C] transition-colors">
+          <div className="bg-white/95 backdrop-blur-xs rounded-3xl p-6 text-center shadow-lg border border-[#E2E8F0] space-y-1 hover:border-[#E5A93C] transition-colors">
             <span className="text-3xl sm:text-4xl font-black text-[#0B1B3D] font-['Outfit'] block">
               12,000+
             </span>
@@ -176,7 +211,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </span>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 text-center shadow-lg border border-[#E2E8F0] space-y-1 hover:border-[#E5A93C] transition-colors">
+          <div className="bg-white/95 backdrop-blur-xs rounded-3xl p-6 text-center shadow-lg border border-[#E2E8F0] space-y-1 hover:border-[#E5A93C] transition-colors">
             <span className="text-3xl sm:text-4xl font-black text-[#0B1B3D] font-['Outfit'] block">
               4 Regions
             </span>
@@ -185,7 +220,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </span>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 text-center shadow-lg border border-[#E2E8F0] space-y-1 hover:border-[#E5A93C] transition-colors">
+          <div className="bg-white/95 backdrop-blur-xs rounded-3xl p-6 text-center shadow-lg border border-[#E2E8F0] space-y-1 hover:border-[#E5A93C] transition-colors">
             <span className="text-3xl sm:text-4xl font-black text-[#0B1B3D] font-['Outfit'] block">
               2,500+
             </span>
@@ -194,7 +229,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </span>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 text-center shadow-lg border border-[#E2E8F0] space-y-1 hover:border-[#E5A93C] transition-colors">
+          <div className="bg-white/95 backdrop-blur-xs rounded-3xl p-6 text-center shadow-lg border border-[#E2E8F0] space-y-1 hover:border-[#E5A93C] transition-colors">
             <span className="text-3xl sm:text-4xl font-black text-[#0B1B3D] font-['Outfit'] block">
               45+
             </span>
@@ -206,12 +241,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* 3. INTERACTIVE FINGER SPELLING TOOL */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <FingerspellingLiveTool />
       </section>
 
       {/* 4. STRATEGIC PILLARS GRID */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-[#C2410C]">
             Strategic Focus Areas
@@ -229,7 +264,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <div
               key={prog.id}
               onClick={() => onNavigate('work')}
-              className="group bg-white rounded-3xl p-7 shadow-lg border border-[#E2E8F0] hover:shadow-2xl hover:border-[#E5A93C] transition-all cursor-pointer flex flex-col justify-between"
+              className="group bg-white/95 backdrop-blur-xs rounded-3xl p-7 shadow-lg border border-[#E2E8F0] hover:shadow-2xl hover:border-[#E5A93C] transition-all cursor-pointer flex flex-col justify-between"
             >
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-[#0B1B3D] text-[#E5A93C] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
@@ -253,12 +288,12 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* 5. INTERACTIVE ESWATINI GEOGRAPHIC MAP */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <InteractiveEswatiniMap />
       </section>
 
       {/* 6. ACCESSIBLE VIDEO HUB TEASER */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-[#060F24] rounded-3xl p-8 lg:p-12 text-white border-2 border-[#162C5B] shadow-2xl relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-5">
@@ -303,7 +338,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* 7. COMMUNITY VOICE & SOLIDARITY SPOTLIGHT */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-gradient-to-r from-[#0B1B3D] to-[#162C5B] text-white rounded-3xl p-8 sm:p-12 shadow-xl border border-white/10 relative overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
             <div className="md:col-span-8 space-y-4">
