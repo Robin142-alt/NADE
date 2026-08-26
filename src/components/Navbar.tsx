@@ -16,6 +16,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import type { PageRoute } from '../types';
+import { BrandLogo } from './BrandLogo';
 
 interface NavbarProps {
   currentRoute: PageRoute;
@@ -41,11 +42,10 @@ export const Navbar: React.FC<NavbarProps> = ({
       isNewOrSpecial: true 
     },
     { route: 'hub', label: 'Video Hub', icon: <Video className="w-4 h-4" /> },
-    { route: 'advocacy', label: 'Advocacy & UNCRPD', icon: <Scale className="w-4 h-4" /> },
-    { route: 'resources', label: 'Resources', icon: <BookOpen className="w-4 h-4" /> },
+    { route: 'advocacy', label: 'Advocacy & Rights', icon: <Scale className="w-4 h-4" /> },
+    { route: 'stories', label: 'Voices & Stories', icon: <Users className="w-4 h-4" /> },
     { route: 'news', label: 'News & Events', icon: <Newspaper className="w-4 h-4" /> },
-    { route: 'get-involved', label: 'Get Involved', icon: <Users className="w-4 h-4" /> },
-    { route: 'contact', label: 'Contact', icon: <PhoneCall className="w-4 h-4" /> }
+    { route: 'contact', label: 'Contact', icon: <PhoneCall className="w-4 h-4" /> },
   ];
 
   const handleNavClick = (route: PageRoute) => {
@@ -55,36 +55,27 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#0B1B3D] text-white shadow-xl border-b border-[#162C5B]">
-      {/* Top Utility Bar with Emergency Deaf Line */}
-      <div className="bg-[#060F24] px-4 py-1.5 text-xs text-neutral-300 border-b border-neutral-800">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 font-bold text-[#E5A93C] bg-[#E5A93C]/10 px-2.5 py-0.5 rounded-full border border-[#E5A93C]/30">
-              <span className="w-2 h-2 rounded-full bg-[#E5A93C] animate-ping" />
-              Emergency Deaf Line (SMS / WhatsApp)
+    <header className="sticky top-0 z-40 bg-[#0B1B3D]/95 backdrop-blur-md border-b-2 border-[#E5A93C]/40 text-white shadow-xl">
+      {/* Top Urgent Alert / Announcement Bar */}
+      <div className="bg-gradient-to-r from-[#060F24] via-[#0B1B3D] to-[#060F24] text-xs py-1.5 px-4 border-b border-white/10 hidden sm:block">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2 text-neutral-200">
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#C2410C] text-white animate-pulse">
+              ANNOUNCEMENT
             </span>
-            <a 
-              href="https://wa.me/26876000000" 
-              target="_blank" 
-              rel="noreferrer"
-              className="text-white hover:text-[#E5A93C] font-mono font-bold tracking-wider hover:underline"
-              aria-label="Send emergency WhatsApp to NADE dispatch at +268 7600 0000"
-            >
-              +268 7600 0000
-            </a>
+            <span className="truncate">
+              Advancing Constitutional & Legal Recognition of Eswatini Sign Language (ESL)
+            </span>
           </div>
 
-          <div className="hidden md:flex items-center gap-4 text-xs">
-            <span className="text-neutral-400">Kingdom of Eswatini • Siyakwemukela</span>
-            <span className="text-[#E5A93C]">|</span>
+          <div className="flex items-center gap-4 text-xs">
             <button 
               onClick={() => handleNavClick('advocacy')}
-              className="hover:text-[#E5A93C] transition-colors"
+              className="hover:text-[#E5A93C] transition-colors underline"
             >
-              Parliament Sign Language Petition 2026
+              Sign the Petition
             </button>
-            <span className="text-[#E5A93C]">|</span>
+            <span className="text-neutral-500">•</span>
             <button 
               onClick={() => handleNavClick('sign-language')}
               className="flex items-center gap-1 text-[#E5A93C] hover:underline font-bold"
@@ -102,33 +93,30 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Logo & Brand Identity */}
           <div 
             onClick={() => handleNavClick('home')}
-            className="flex items-center gap-3.5 cursor-pointer group"
+            className="flex items-center gap-3.5 cursor-pointer group py-1"
             role="button"
             tabIndex={0}
             onKeyDown={(e) => e.key === 'Enter' && handleNavClick('home')}
             aria-label="NADE Home Page"
           >
-            {/* Official NADE Logo Emblem */}
-            <div className="w-12 h-12 rounded-xl bg-white/10 p-1 backdrop-blur-sm border border-[#E5A93C]/40 shadow-lg group-hover:scale-105 group-hover:border-[#E5A93C] transition-all overflow-hidden bg-gradient-to-b from-[#0e234e] to-[#071329] flex items-center justify-center flex-shrink-0">
-              <img 
-                src="/nade-logo.png" 
-                alt="National Association of the Deaf Eswatini official logo" 
-                className="w-full h-full object-contain filter drop-shadow" 
-              />
-            </div>
+            {/* Official NADE Logo Emblem with BrandLogo */}
+            <BrandLogo variant="nav" />
 
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-extrabold text-2xl tracking-wider text-white font-['Outfit']">NADE</span>
-                <span className="text-[10px] uppercase font-bold tracking-widest bg-[#E5A93C] text-[#0B1B3D] px-2 py-0.5 rounded font-['Outfit']">
+                <span className="font-extrabold text-2xl tracking-wider text-white font-['Outfit'] group-hover:text-[#E5A93C] transition-colors">
+                  NADE
+                </span>
+                <span className="text-[10px] uppercase font-black tracking-widest bg-gradient-to-r from-[#C2851D] via-[#E5A93C] to-[#C2851D] text-[#0B1B3D] px-2 py-0.5 rounded font-['Outfit'] shadow-sm">
                   Eswatini
                 </span>
               </div>
               <p className="text-[11px] text-neutral-300 font-medium tracking-tight hidden sm:block">
                 National Association of the Deaf Eswatini
               </p>
-              <p className="text-[10px] text-[#E5A93C] font-medium tracking-wide">
-                Every Hand Has a Voice
+              <p className="text-[10px] text-[#E5A93C] font-semibold tracking-wide flex items-center gap-1">
+                <span>Every Hand Has a Voice</span>
+                <span className="text-[8px] opacity-70">• Est. 1993</span>
               </p>
             </div>
           </div>
@@ -196,7 +184,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#060F24] border-t border-neutral-800 px-4 pt-4 pb-8 space-y-3 shadow-2xl animate-fadeIn">
+        <div className="lg:hidden bg-[#060F24] border-t border-[#E5A93C]/30 px-4 pt-4 pb-8 space-y-4 shadow-2xl animate-fadeIn">
+          {/* Mobile Crest Banner */}
+          <div className="p-3.5 rounded-2xl bg-gradient-to-r from-[#0B1B3D] via-[#162C5B] to-[#0B1B3D] border border-[#E5A93C]/40 flex items-center gap-3">
+            <BrandLogo variant="card-badge" />
+            <div>
+              <h4 className="text-sm font-extrabold text-white font-['Outfit']">NADE Eswatini</h4>
+              <p className="text-[11px] text-[#E5A93C] font-medium">National Apex Body for the Deaf</p>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 gap-1">
             {navLinks.map((item) => {
               const isActive = currentRoute === item.route;

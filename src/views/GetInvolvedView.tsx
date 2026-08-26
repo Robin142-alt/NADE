@@ -4,9 +4,13 @@ import {
   Heart, 
   CheckCircle2, 
   Send, 
-  Gift
+  Gift,
+  Award,
+  Sparkles,
+  ShieldCheck
 } from 'lucide-react';
 import type { PageRoute } from '../types';
+import { BrandLogo } from '../components/BrandLogo';
 
 interface GetInvolvedViewProps {
   onNavigate?: (route: PageRoute) => void;
@@ -36,71 +40,144 @@ export const GetInvolvedView: React.FC<GetInvolvedViewProps> = () => {
       {/* 1. Header Banner */}
       <section className="bg-gradient-to-r from-[#0B1B3D] via-[#162C5B] to-[#0B1B3D] text-white rounded-3xl p-8 sm:p-14 shadow-2xl border-b-4 border-[#E5A93C] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 hand-pattern-bg pointer-events-none" />
-        <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
-            <Users className="w-3.5 h-3.5" />
-            Join the Movement
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
+              <Users className="w-3.5 h-3.5" />
+              Join the Movement
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
+              Get Involved & Stand With Us
+            </h1>
+            <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
+              Whether you are Deaf, a hearing family member, an aspiring sign language interpreter, or a corporate partner, your official registration strengthens our collective voice across the Kingdom.
+            </p>
+
+            {/* Action Tabs */}
+            <div className="flex flex-wrap gap-2 pt-2">
+              <button
+                onClick={() => {
+                  setActiveTab('membership');
+                  setFormSubmitted(false);
+                }}
+                className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  activeTab === 'membership'
+                    ? 'bg-[#E5A93C] text-[#0B1B3D] shadow-lg'
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
+              >
+                <Users className="w-4 h-4" />
+                <span>NADE Membership</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setActiveTab('sponsor');
+                  setFormSubmitted(false);
+                }}
+                className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  activeTab === 'sponsor'
+                    ? 'bg-[#E5A93C] text-[#0B1B3D] shadow-lg'
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
+              >
+                <Gift className="w-4 h-4" />
+                <span>Sponsor a Deaf Child Kit</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setActiveTab('volunteer');
+                  setFormSubmitted(false);
+                }}
+                className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  activeTab === 'volunteer'
+                    ? 'bg-[#E5A93C] text-[#0B1B3D] shadow-lg'
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
+              >
+                <Heart className="w-4 h-4" />
+                <span>Volunteer & Interpreting</span>
+              </button>
+            </div>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
-            Get Involved & Stand With Us
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
-            Whether you are Deaf, a hearing family member, an aspiring sign language interpreter, or a corporate partner, your involvement strengthens our collective voice.
-          </p>
 
-          {/* Action Tabs */}
-          <div className="flex flex-wrap gap-2 pt-2">
-            <button
-              onClick={() => {
-                setActiveTab('membership');
-                setFormSubmitted(false);
-              }}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-                activeTab === 'membership'
-                  ? 'bg-[#E5A93C] text-[#0B1B3D] shadow-lg'
-                  : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
-            >
-              <Users className="w-4 h-4" />
-              <span>NADE Membership</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setActiveTab('sponsor');
-                setFormSubmitted(false);
-              }}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-                activeTab === 'sponsor'
-                  ? 'bg-[#E5A93C] text-[#0B1B3D] shadow-lg'
-                  : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
-            >
-              <Gift className="w-4 h-4" />
-              <span>Sponsor a Deaf Child Kit</span>
-            </button>
-
-            <button
-              onClick={() => {
-                setActiveTab('volunteer');
-                setFormSubmitted(false);
-              }}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-                activeTab === 'volunteer'
-                  ? 'bg-[#E5A93C] text-[#0B1B3D] shadow-lg'
-                  : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
-            >
-              <Heart className="w-4 h-4" />
-              <span>Volunteer & Interpreting</span>
-            </button>
+          <div className="lg:col-span-4 flex justify-center lg:justify-end">
+            <BrandLogo variant="hero-crest" withGlow={true} />
           </div>
         </div>
       </section>
 
-      {/* 2. Interactive Form Container */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-xl border border-[#E2E8F0] space-y-6">
+      {/* 2. Interactive Digital Member Card Preview & Form */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Col: Live NADE Digital Membership Card with Standout Logo */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="bg-gradient-to-br from-[#0B1B3D] via-[#162C5B] to-[#060F24] rounded-3xl p-6 sm:p-7 text-white shadow-2xl border-2 border-[#E5A93C]/50 relative overflow-hidden">
+              {/* Background Crest Watermark */}
+              <BrandLogo variant="watermark" className="absolute -right-6 -bottom-6 w-48 h-48" />
+
+              {/* Top Card Header */}
+              <div className="flex items-center justify-between border-b border-white/15 pb-4 relative z-10">
+                <div className="flex items-center gap-3">
+                  <BrandLogo variant="card-badge" />
+                  <div>
+                    <h4 className="text-base font-extrabold font-['Outfit'] tracking-wide text-white">NADE Eswatini</h4>
+                    <p className="text-[10px] text-[#E5A93C] uppercase font-bold tracking-wider">Official Digital Member Pass</p>
+                  </div>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-[#E5A93C]/20 border border-[#E5A93C] flex items-center justify-center text-[#E5A93C]">
+                  <Award className="w-4 h-4" />
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className="py-6 space-y-4 relative z-10">
+                <div>
+                  <span className="text-[10px] text-neutral-300 uppercase tracking-widest font-semibold block">Member Name</span>
+                  <p className="text-lg sm:text-xl font-black font-['Outfit'] text-white truncate">
+                    {formData.name.trim() ? formData.name : 'Your Full Name'}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 pt-1">
+                  <div>
+                    <span className="text-[9px] text-neutral-300 uppercase tracking-widest font-semibold block">Category</span>
+                    <p className="text-xs font-bold text-[#E5A93C] truncate">
+                      {activeTab === 'membership' ? formData.membershipCategory : activeTab === 'sponsor' ? 'Official Child Sponsor' : 'ESL Volunteer Ally'}
+                    </p>
+                  </div>
+                  <div>
+                    <span className="text-[9px] text-neutral-300 uppercase tracking-widest font-semibold block">Region</span>
+                    <p className="text-xs font-bold text-white truncate">
+                      {formData.region}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card Footer with Verification Strip */}
+              <div className="pt-4 border-t border-white/15 flex items-center justify-between text-[10px] text-neutral-300 relative z-10">
+                <div className="flex items-center gap-1.5 text-[#047857] font-bold">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#E5A93C]" />
+                  <span className="text-[#E5A93C]">Accredited NADE Pass</span>
+                </div>
+                <span className="font-mono text-neutral-400">SZ-2026-NADE</span>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#0B1B3D] text-[#E5A93C] flex items-center justify-center flex-shrink-0">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <p className="text-xs text-[#475569] leading-relaxed">
+                Your registration automatically issues your accredited digital identity backed by the National Association.
+              </p>
+            </div>
+          </div>
+
+          {/* Right Col: Form Container */}
+          <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-[#E2E8F0]">
           {formSubmitted ? (
             <div className="py-12 text-center space-y-4">
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto animate-bounce">
@@ -264,6 +341,7 @@ export const GetInvolvedView: React.FC<GetInvolvedViewProps> = () => {
               </button>
             </form>
           )}
+          </div>
         </div>
       </section>
     </div>

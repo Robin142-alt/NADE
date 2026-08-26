@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { VIDEO_HUB_ITEMS } from '../data/hub';
 import type { VideoHubItem } from '../types';
+import { BrandLogo } from '../components/BrandLogo';
 
 export const VideoHubView: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<VideoHubItem>(VIDEO_HUB_ITEMS[0]);
@@ -39,17 +40,23 @@ export const VideoHubView: React.FC = () => {
       {/* 1. Header Banner */}
       <section className="bg-gradient-to-r from-[#0B1B3D] via-[#162C5B] to-[#0B1B3D] text-white rounded-3xl p-8 sm:p-14 shadow-2xl border-b-4 border-[#E5A93C] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 hand-pattern-bg pointer-events-none" />
-        <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
-            <Video className="w-3.5 h-3.5" />
-            Accessible Media Archive
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
+              <Video className="w-3.5 h-3.5" />
+              Accessible Media Archive
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
+              NADE Accessible Video Hub
+            </h1>
+            <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
+              Official video broadcasts, news bulletins, health advisories, and cultural content in Eswatini Sign Language with synchronized captions and transcripts.
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
-            NADE Accessible Video Hub
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
-            All videos feature dual Eswatini Sign Language (ESL) presenters, verified closed captions, and clickable synchronized transcripts for universal access.
-          </p>
+
+          <div className="lg:col-span-4 flex justify-center lg:justify-end">
+            <BrandLogo variant="hero-crest" withGlow={true} />
+          </div>
         </div>
       </section>
 

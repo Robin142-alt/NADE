@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Download, Printer, CheckCircle, BookOpen } from 'lucide-react';
 import type { ResourceItem } from '../types';
+import { BrandLogo } from './BrandLogo';
 
 interface ResourceViewerModalProps {
   resource: ResourceItem | null;
@@ -29,10 +30,17 @@ export const ResourceViewerModal: React.FC<ResourceViewerModalProps> = ({
       <div className="bg-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl border-2 border-[#E2E8F0] my-8 max-h-[90vh] overflow-y-auto">
         {/* Top bar */}
         <div className="flex items-center justify-between pb-4 border-b border-[#E2E8F0] mb-6">
-          <div className="flex items-center gap-2">
-            <span className="px-3 py-1 bg-[#0B1B3D]/10 text-[#0B1B3D] rounded-full text-xs font-bold font-mono">
-              {resource.category} • {resource.format} ({resource.fileSize || '3.2 MB'})
-            </span>
+          <div className="flex items-center gap-3">
+            <BrandLogo variant="card-badge" />
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-[#0B1B3D]">NADE Official Publication</span>
+                <span className="px-2.5 py-0.5 bg-[#0B1B3D]/10 text-[#0B1B3D] rounded-full text-[10px] font-bold font-mono">
+                  {resource.category} • {resource.format}
+                </span>
+              </div>
+              <p className="text-[11px] text-[#475569]">National Association of the Deaf Eswatini</p>
+            </div>
           </div>
           <button
             onClick={onClose}

@@ -9,6 +9,7 @@ import {
   Award
 } from 'lucide-react';
 import type { PageRoute } from '../types';
+import { BrandLogo } from './BrandLogo';
 
 interface FooterProps {
   onNavigate: (route: PageRoute) => void;
@@ -28,26 +29,26 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="bg-[#060F24] text-neutral-300 pt-16 pb-12 border-t-4 border-[#E5A93C]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-[#060F24] text-neutral-300 pt-16 pb-12 border-t-4 border-[#E5A93C] relative overflow-hidden">
+      {/* Background Subtle Watermark */}
+      <BrandLogo variant="watermark" className="absolute -left-10 -bottom-10 w-72 h-72" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-neutral-800">
           {/* Col 1 & 2: Organization Profile */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-2xl bg-white/10 p-1.5 backdrop-blur-sm border border-[#E5A93C]/40 shadow-lg overflow-hidden bg-gradient-to-b from-[#0e234e] to-[#071329] flex items-center justify-center flex-shrink-0">
-                <img 
-                  src="/nade-logo.png" 
-                  alt="National Association of the Deaf Eswatini official logo" 
-                  className="w-full h-full object-contain filter drop-shadow" 
-                />
-              </div>
+            <div className="flex items-center gap-3.5">
+              <BrandLogo variant="footer" />
               <div>
                 <h3 className="text-xl font-extrabold text-white font-['Outfit'] tracking-wide">
                   NADE Eswatini
                 </h3>
                 <p className="text-xs text-[#E5A93C] font-semibold">
                   National Association of the Deaf Eswatini
+                </p>
+                <p className="text-[10px] text-neutral-400">
+                  Every Hand Has a Voice • Est. 1993
                 </p>
               </div>
             </div>

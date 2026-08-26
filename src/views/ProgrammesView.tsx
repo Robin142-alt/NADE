@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { NADE_PROGRAMMES } from '../data/programmes';
 import type { PageRoute } from '../types';
+import { BrandLogo } from '../components/BrandLogo';
 
 interface ProgrammesViewProps {
   onNavigate: (route: PageRoute) => void;
@@ -44,17 +45,23 @@ export const ProgrammesView: React.FC<ProgrammesViewProps> = ({
       {/* 1. Header Banner */}
       <section className="bg-gradient-to-r from-[#0B1B3D] via-[#0F234D] to-[#0B1B3D] text-white rounded-3xl p-8 sm:p-14 shadow-2xl border-b-4 border-[#E5A93C] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 hand-pattern-bg pointer-events-none" />
-        <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
-            <Sparkles className="w-3.5 h-3.5" />
-            Our Strategic Work
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
+              <Sparkles className="w-3.5 h-3.5" />
+              Our Strategic Work
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
+              NADE National Strategic Pillars
+            </h1>
+            <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
+              Six comprehensive focus areas driving structural reform, linguistic preservation, early education, healthcare equity, and economic empowerment across the Kingdom of Eswatini.
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
-            NADE National Strategic Pillars
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
-            Six comprehensive focus areas driving structural reform, linguistic preservation, early education, healthcare equity, and economic empowerment across the Kingdom of Eswatini.
-          </p>
+
+          <div className="lg:col-span-4 flex justify-center lg:justify-end">
+            <BrandLogo variant="hero-crest" withGlow={true} />
+          </div>
         </div>
       </section>
 

@@ -7,10 +7,12 @@ import {
   Building2, 
   Globe, 
   CheckCircle2,
-  Scale
+  Scale,
+  Sparkles
 } from 'lucide-react';
 import { NADE_LEADERSHIP } from '../data/leadership';
 import type { PageRoute } from '../types';
+import { BrandLogo } from '../components/BrandLogo';
 
 interface AboutViewProps {
   onNavigate: (route: PageRoute) => void;
@@ -61,23 +63,67 @@ export const AboutView: React.FC<AboutViewProps> = () => {
               Our Mission, History & Governance
             </h1>
             <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light max-w-2xl">
-              Founded by the Deaf, led by the Deaf, for the Deaf. We are dedicated to ensuring that every Deaf and hard-of-hearing Swazi lives in dignity, equality, and complete linguistic freedom.
+              Founded by the Deaf, led by the Deaf, for the Deaf. We are dedicated to ensuring that every Deaf, Deafblind, and hard-of-hearing Swazi lives in dignity, equality, and complete linguistic freedom across all four regions of the Kingdom.
             </p>
           </div>
           
           <div className="lg:col-span-4 flex justify-center lg:justify-end">
-            <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-white/10 p-3 backdrop-blur-md border-2 border-[#E5A93C]/40 shadow-2xl flex items-center justify-center bg-gradient-to-b from-[#0e234e] to-[#071329] group hover:border-[#E5A93C] transition-all">
-              <img 
-                src="/nade-logo.png" 
-                alt="National Association of the Deaf Eswatini official emblem" 
-                className="w-full h-full object-contain filter drop-shadow-xl group-hover:scale-105 transition-transform" 
-              />
+            <BrandLogo variant="hero-crest" withGlow={true} withText={true} />
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Official Insignia & Heraldry Showcase */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-br from-[#0B1B3D] via-[#162C5B] to-[#0B1B3D] text-white rounded-3xl p-8 sm:p-10 shadow-xl border-2 border-[#E5A93C]/40 relative overflow-hidden">
+          <div className="absolute -right-10 -bottom-10 w-64 h-64 opacity-10 pointer-events-none">
+            <BrandLogo variant="watermark" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+            <div className="md:col-span-4 flex justify-center">
+              <div className="text-center space-y-3">
+                <BrandLogo variant="seal" />
+                <span className="text-[11px] font-black uppercase tracking-widest text-[#E5A93C] block">
+                  Official Seal of the Deaf
+                </span>
+              </div>
+            </div>
+
+            <div className="md:col-span-8 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-bold text-[#E5A93C] border border-[#E5A93C]/30">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>The NADE Emblem Heraldry & Symbolism</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl font-black font-['Outfit']">
+                Meaning Behind the Official Insignia
+              </h2>
+
+              <p className="text-sm text-neutral-200 leading-relaxed font-light">
+                The NADE emblem is the recognized sovereign mark of Deaf empowerment in the Kingdom of Eswatini. The stylized hands signify visual communication, collective solidarity, and linguistic expression. The royal navy and gold hues honor our Swazi heritage, cultural identity, and unyielding pursuit of constitutional equality.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                  <span className="text-xs font-bold text-[#E5A93C] block">The Hands</span>
+                  <span className="text-[11px] text-neutral-300">Linguistic voice & cultural expression</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                  <span className="text-xs font-bold text-[#E5A93C] block">The Royal Shield</span>
+                  <span className="text-[11px] text-neutral-300">Protection of constitutional rights</span>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                  <span className="text-xs font-bold text-[#E5A93C] block">The Gold Crown</span>
+                  <span className="text-[11px] text-neutral-300">Excellence, dignity & self-reliance</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Mission, Vision, Core Values */}
+      {/* 3. Mission, Vision, Core Values */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Mission */}
@@ -132,7 +178,7 @@ export const AboutView: React.FC<AboutViewProps> = () => {
         </div>
       </section>
 
-      {/* 3. Historical Timeline */}
+      {/* 4. Historical Timeline */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-[#C2410C]">

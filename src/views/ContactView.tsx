@@ -9,6 +9,7 @@ import {
   Video, 
   CalendarCheck
 } from 'lucide-react';
+import { BrandLogo } from '../components/BrandLogo';
 
 interface ContactViewProps {
   onOpenInterpreterModal: () => void;
@@ -35,17 +36,23 @@ export const ContactView: React.FC<ContactViewProps> = ({ onOpenInterpreterModal
       {/* 1. Header Banner */}
       <section className="bg-gradient-to-r from-[#0B1B3D] via-[#162C5B] to-[#0B1B3D] text-white rounded-3xl p-8 sm:p-14 shadow-2xl border-b-4 border-[#E5A93C] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 hand-pattern-bg pointer-events-none" />
-        <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
-            <Phone className="w-3.5 h-3.5" />
-            Accessible Communication
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
+              <Phone className="w-3.5 h-3.5" />
+              Accessible Communication
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
+              Contact NADE Eswatini
+            </h1>
+            <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
+              We prioritize visual, text-based, and sign-accessible communication for Deaf citizens, families, legal officers, and partners across the Kingdom.
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
-            Contact NADE Eswatini
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
-            We prioritize visual, text-based, and sign-accessible communication for Deaf citizens, families, legal officers, and partners across the Kingdom.
-          </p>
+
+          <div className="lg:col-span-4 flex justify-center lg:justify-end">
+            <BrandLogo variant="hero-crest" withGlow={true} />
+          </div>
         </div>
       </section>
 

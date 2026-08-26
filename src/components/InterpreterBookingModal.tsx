@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { 
   X, 
-  CalendarCheck, 
   CheckCircle2,
-  Send
+  Send,
+  ShieldCheck
 } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 
 interface InterpreterBookingModalProps {
   isOpen: boolean;
@@ -53,15 +54,19 @@ export const InterpreterBookingModal: React.FC<InterpreterBookingModalProps> = (
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-[#E2E8F0] mb-6">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-[#0B1B3D] text-[#E5A93C] rounded-2xl">
-              <CalendarCheck className="w-6 h-6" />
-            </div>
+            <BrandLogo variant="card-badge" />
             <div>
-              <h2 id="booking-modal-title" className="text-xl font-bold text-[#0B1B3D] font-['Outfit']">
-                Book Certified Sign Language Interpreter
-              </h2>
+              <div className="flex items-center gap-2">
+                <h2 id="booking-modal-title" className="text-lg sm:text-xl font-bold text-[#0B1B3D] font-['Outfit']">
+                  Book Certified ESL Interpreter
+                </h2>
+                <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-bold text-[#047857] bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  <ShieldCheck className="w-3 h-3" />
+                  NADE Accredited
+                </span>
+              </div>
               <p className="text-xs text-[#475569]">
-                Professional Eswatini Sign Language (ESL) dispatch for court, hospital, school & events
+                Official National Association of the Deaf Eswatini service dispatch
               </p>
             </div>
           </div>

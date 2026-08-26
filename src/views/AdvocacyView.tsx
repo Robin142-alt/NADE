@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { 
   Scale, 
   CheckCircle2, 
-  Send,
+  Send, 
   Gavel
 } from 'lucide-react';
 import type { PageRoute } from '../types';
+import { BrandLogo } from '../components/BrandLogo';
 
 interface AdvocacyViewProps {
   onNavigate?: (route: PageRoute) => void;
@@ -57,28 +58,40 @@ export const AdvocacyView: React.FC<AdvocacyViewProps> = ({
       {/* 1. Header Banner */}
       <section className="bg-gradient-to-r from-[#0B1B3D] via-[#162C5B] to-[#0B1B3D] text-white rounded-3xl p-8 sm:p-14 shadow-2xl border-b-4 border-[#E5A93C] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 hand-pattern-bg pointer-events-none" />
-        <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
-            <Scale className="w-3.5 h-3.5" />
-            Human Rights & Legal Charter
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
+              <Scale className="w-3.5 h-3.5" />
+              Human Rights & Legal Charter
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
+              Advocacy, UNCRPD & Legal Equality
+            </h1>
+            <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
+              Defending Deaf rights in courtrooms, police stations, Parliament, and healthcare clinics across the Kingdom of Eswatini under constitutional and international law.
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
-            Advocacy, UNCRPD & Legal Equality
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
-            Defending Deaf rights in courtrooms, police stations, Parliament, and healthcare clinics across the Kingdom of Eswatini under constitutional and international law.
-          </p>
+
+          <div className="lg:col-span-4 flex justify-center lg:justify-end">
+            <BrandLogo variant="hero-crest" withGlow={true} />
+          </div>
         </div>
       </section>
 
       {/* 2. Parliamentary Petition Highlight Box */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-br from-[#0B1B3D] to-[#162C5B] text-white rounded-3xl p-8 sm:p-12 shadow-2xl border-2 border-[#E5A93C] relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Watermark */}
+          <BrandLogo variant="watermark" className="absolute -right-6 -bottom-6 w-64 h-64" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
-                <Gavel className="w-3.5 h-3.5" />
-                Active National Campaign 2026
+              <div className="flex items-center gap-3">
+                <BrandLogo variant="card-badge" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
+                  <Gavel className="w-3.5 h-3.5" />
+                  Official NADE Campaign 2026
+                </div>
               </div>
               <h2 className="text-2xl sm:text-4xl font-black font-['Outfit']">
                 Petition for Official Constitutional Recognition of Eswatini Sign Language

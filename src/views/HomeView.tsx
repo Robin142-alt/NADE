@@ -8,9 +8,9 @@ import {
   ShieldCheck, 
   Users, 
   ChevronRight,
-  Sparkles,
-  Play,
-  Award
+  Award,
+  CheckCircle2,
+  Play
 } from 'lucide-react';
 import type { PageRoute } from '../types';
 import { NADE_PROGRAMMES } from '../data/programmes';
@@ -19,6 +19,7 @@ import { VIDEO_HUB_ITEMS } from '../data/hub';
 import { COMMUNITY_STORIES } from '../data/stories';
 import { InteractiveEswatiniMap } from '../components/InteractiveEswatiniMap';
 import { FingerspellingLiveTool } from '../components/FingerspellingLiveTool';
+import { BrandLogo } from '../components/BrandLogo';
 
 interface HomeViewProps {
   onNavigate: (route: PageRoute) => void;
@@ -47,12 +48,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Col: Hero Text & CTAs */}
             <div className="lg:col-span-7 space-y-6">
-              {/* National Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#E5A93C]/40 backdrop-blur-md">
+              {/* National Badge with mini seal */}
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-[#E5A93C]/50 backdrop-blur-md shadow-md">
                 <span className="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse" />
                 <span className="text-xs font-bold uppercase tracking-wider text-[#E5A93C]">
                   Kingdom of Eswatini • Siyakwemukela
                 </span>
+                <span className="text-white/40">|</span>
+                <span className="text-xs text-neutral-300 font-medium">Est. 1993</span>
               </div>
 
               {/* Main Headline */}
@@ -62,7 +65,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
               {/* Subtitle */}
               <p className="text-base sm:text-lg text-neutral-200 leading-relaxed max-w-2xl font-light">
-                The National Association of the Deaf Eswatini (NADE) unites and empowers Deaf, Deafblind, and hard-of-hearing Swazis. Championing Eswatini Sign Language recognition, bilingual education, healthcare equity, and equal human rights across all 4 regions.
+                The National Association of the Deaf Eswatini (NADE) is the official apex organisation uniting and empowering Deaf, Deafblind, and hard-of-hearing Swazis. Championing Eswatini Sign Language recognition, bilingual education, healthcare equity, and human rights.
               </p>
 
               {/* Primary Action Buttons */}
@@ -83,6 +86,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   <HeartHandshake className="w-4 h-4 text-[#E5A93C]" />
                   <span>Book an Interpreter</span>
                 </button>
+
+                <button
+                  onClick={() => onNavigate('about')}
+                  className="px-5 py-3.5 text-neutral-300 hover:text-[#E5A93C] font-bold text-sm transition-colors flex items-center gap-1.5"
+                >
+                  <span>About NADE Heritage</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
 
               {/* Verified Trust Badges */}
@@ -98,45 +109,55 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
             </div>
 
-            {/* Right Col: Interactive Visual Card */}
-            <div className="lg:col-span-5">
-              <div className="bg-white/10 border border-white/20 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
-                <div className="flex items-center justify-between border-b border-white/15 pb-4">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-3 h-3 rounded-full bg-[#E5A93C] animate-ping" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-[#E5A93C]">
-                      Sign of the Day
-                    </span>
+            {/* Right Col: Official Crest Spotlight & Interactive Card */}
+            <div className="lg:col-span-5 space-y-6">
+              {/* Grand Emblem Spotlight */}
+              <div className="bg-gradient-to-b from-white/15 via-white/5 to-[#060F24]/80 border-2 border-[#E5A93C]/40 backdrop-blur-2xl rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 relative overflow-hidden">
+                {/* Background Watermark */}
+                <BrandLogo variant="watermark" className="absolute -right-8 -bottom-8 w-56 h-56" />
+
+                {/* Crest Display */}
+                <div className="flex flex-col sm:flex-row items-center gap-6 relative z-10">
+                  <BrandLogo variant="hero-crest" withGlow={true} />
+                  
+                  <div className="text-center sm:text-left space-y-2">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#E5A93C]/20 border border-[#E5A93C]/40 text-[#E5A93C] text-[10px] font-black uppercase tracking-wider">
+                      <CheckCircle2 className="w-3 h-3" />
+                      Apex National Body
+                    </div>
+                    <h3 className="text-xl font-black text-white font-['Outfit']">
+                      National Association of the Deaf Eswatini
+                    </h3>
+                    <p className="text-xs text-neutral-300 leading-relaxed">
+                      Official custodian of Eswatini Sign Language (ESL) research, advocacy, and community empowerment.
+                    </p>
                   </div>
-                  <span className="text-xs font-mono bg-white/10 px-2.5 py-1 rounded-full text-neutral-200">
-                    Category: {featuredSign.category}
-                  </span>
                 </div>
 
-                {/* Big Sign Preview */}
-                <div className="bg-[#060F24] rounded-2xl p-6 text-center border border-white/10 space-y-3">
-                  <div className="w-20 h-20 bg-gradient-to-tr from-[#E5A93C] to-[#C2410C] rounded-full flex items-center justify-center mx-auto text-[#0B1B3D] shadow-lg">
-                    <Hand className="w-10 h-10" />
-                  </div>
-                  <h3 className="text-2xl font-black text-white font-['Outfit']">
-                    {featuredSign.word}
-                  </h3>
-                  <p className="text-sm font-semibold text-[#E5A93C]">
-                    siSwati: "{featuredSign.siswatiWord}"
-                  </p>
-                  <p className="text-xs text-neutral-300 leading-relaxed px-2">
-                    {featuredSign.description}
-                  </p>
-                </div>
+                {/* Sign of the Day Mini Widget */}
+                <div className="pt-4 border-t border-white/15 relative z-10">
+                  <div className="flex items-center justify-between bg-[#060F24]/90 rounded-2xl p-4 border border-white/10">
+                    <div className="flex items-center gap-3">
+                      <div className="w-11 h-11 bg-gradient-to-tr from-[#E5A93C] to-[#C2410C] rounded-xl flex items-center justify-center text-[#0B1B3D] shadow-md flex-shrink-0">
+                        <Hand className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[10px] uppercase font-extrabold tracking-wider text-[#E5A93C]">Sign of the Day</span>
+                          <span className="text-[10px] text-neutral-400">• {featuredSign.category}</span>
+                        </div>
+                        <h4 className="text-base font-black text-white font-['Outfit']">{featuredSign.word} ("{featuredSign.siswatiWord}")</h4>
+                      </div>
+                    </div>
 
-                {/* Learn Sign Action */}
-                <button
-                  onClick={() => onNavigate('sign-language')}
-                  className="w-full py-3 bg-[#E5A93C] hover:bg-[#F3C465] text-[#0B1B3D] rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  <span>Practice In ESL Dictionary</span>
-                </button>
+                    <button
+                      onClick={() => onNavigate('sign-language')}
+                      className="px-3.5 py-2 bg-[#E5A93C] hover:bg-[#F3C465] text-[#0B1B3D] rounded-xl font-extrabold text-xs transition-transform hover:scale-105 flex-shrink-0"
+                    >
+                      Learn
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

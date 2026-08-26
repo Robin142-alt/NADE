@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   Search, 
   BookOpen, 
@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { ESL_DICTIONARY } from '../data/dictionary';
 import type { ESLSignItem } from '../types';
+import { BrandLogo } from '../components/BrandLogo';
 
 export const SignDictionaryView: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -54,16 +55,18 @@ export const SignDictionaryView: React.FC = () => {
 
   // Quiz logic
   const currentQuizItem = ESL_DICTIONARY[quizIndex % ESL_DICTIONARY.length];
-  // Generate 4 options: 1 correct + 3 random distinct options
-  const otherOptions = ESL_DICTIONARY
-    .filter((s) => s.id !== currentQuizItem.id)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 3)
-    .map((s) => s.word);
-  const quizOptions = React.useMemo(() => {
-    const opts = [currentQuizItem.word, ...otherOptions];
-    return opts.sort(() => 0.5 - Math.random());
-  }, [quizIndex]);
+  
+  const otherOptions = useMemo(() => {
+    return ESL_DICTIONARY
+      .filter((s) => s.id !== currentQuizItem.id)
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 3)
+      .map((s) => s.word);
+  }, [currentQuizItem.id]);
+
+  const quizOptions = useMemo(() => {
+    return [currentQuizItem.word, ...otherOptions].sort(() => 0.5 - Math.random());
+  }, [currentQuizItem.word, otherOptions]);
 
   const handleQuizAnswer = (option: string) => {
     if (quizAnswered) return;
@@ -92,50 +95,56 @@ export const SignDictionaryView: React.FC = () => {
       {/* 1. Header Banner */}
       <section className="bg-gradient-to-r from-[#0B1B3D] via-[#162C5B] to-[#0B1B3D] text-white rounded-3xl p-8 sm:p-14 shadow-2xl border-b-4 border-[#E5A93C] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 hand-pattern-bg pointer-events-none" />
-        <div className="relative z-10 max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
-            <BookOpen className="w-3.5 h-3.5" />
-            Linguistic Repository
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
-            Eswatini Sign Language (ESL) Visual Dictionary
-          </h1>
-          <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
-            Search authentic Swazi signs with siSwati translations, handshape geometry, movement trajectories, and cultural facial markers.
-          </p>
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E5A93C] text-[#0B1B3D] rounded-full text-xs font-black">
+              <BookOpen className="w-3.5 h-3.5" />
+              Linguistic Repository
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-black font-['Outfit'] tracking-tight">
+              Eswatini Sign Language (ESL) Visual Dictionary
+            </h1>
+            <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-light">
+              Search authentic Swazi signs with siSwati translations, handshape geometry, movement trajectories, and cultural facial markers documented by NADE linguists.
+            </p>
 
-          {/* Toggle between Dictionary & Quiz Mode */}
-          <div className="flex flex-wrap items-center gap-3 pt-2">
-            <button
-              onClick={() => setIsQuizMode(false)}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all ${
-                !isQuizMode
-                  ? 'bg-[#E5A93C] text-[#0B1B3D] shadow-lg'
-                  : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
-            >
-              Browse Dictionary ({ESL_DICTIONARY.length} Signs)
-            </button>
-            <button
-              onClick={() => {
-                setIsQuizMode(true);
-                handleResetQuiz();
-              }}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-                isQuizMode
-                  ? 'bg-[#E5A93C] text-[#0B1B3D] shadow-lg'
-                  : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
-            >
-              <Sparkles className="w-4 h-4" />
-              Practice / Flashcards Quiz
-            </button>
-            <button
-              onClick={() => setShowSuggestModal(true)}
-              className="px-4 py-2.5 bg-white/10 hover:bg-white/15 text-neutral-200 border border-white/20 rounded-xl text-xs font-semibold transition-all ml-auto"
-            >
-              + Suggest a Sign
-            </button>
+            {/* Toggle between Dictionary & Quiz Mode */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <button
+                onClick={() => setIsQuizMode(false)}
+                className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                  !isQuizMode
+                    ? 'bg-[#E5A93C] text-[#0B1B3D] shadow-lg'
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
+              >
+                Browse Dictionary ({ESL_DICTIONARY.length} Signs)
+              </button>
+              <button
+                onClick={() => {
+                  setIsQuizMode(true);
+                  handleResetQuiz();
+                }}
+                className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  isQuizMode
+                    ? 'bg-[#E5A93C] text-[#0B1B3D] shadow-lg'
+                    : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
+              >
+                <Sparkles className="w-4 h-4" />
+                Practice / Flashcards Quiz
+              </button>
+              <button
+                onClick={() => setShowSuggestModal(true)}
+                className="px-4 py-2.5 bg-white/10 hover:bg-white/15 text-neutral-200 border border-white/20 rounded-xl text-xs font-semibold transition-all"
+              >
+                + Suggest a Sign
+              </button>
+            </div>
+          </div>
+
+          <div className="lg:col-span-4 flex justify-center lg:justify-end">
+            <BrandLogo variant="hero-crest" withGlow={true} />
           </div>
         </div>
       </section>
